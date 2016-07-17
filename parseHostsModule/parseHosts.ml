@@ -10,8 +10,8 @@ class parseHosts = object (self)
       *)
     Printf.printf "%s\n" str
 
-  method readHosts =
-    let chan = open_in "/etc/hosts" in
+  method readHosts filename =
+    let chan = open_in filename in
         Std.input_list chan
 
   (*
@@ -41,12 +41,12 @@ class parseHosts = object (self)
 end;;
 
 let main () =
-      (*let len = (Array.length Sys.argv) in
+      let len = (Array.length Sys.argv) in
         let argv = (Array.sub Sys.argv 1 (len-1)) in (* skip argv0 *)
-          Array.iter cat argv *)
+          (*Array.iter cat argv *)
           (* create an object*)
           let obj = new parseHosts in
-            obj#printHostsContents (obj#excludeListLine obj#readHosts "localhost")
+            obj#printHostsContents (obj#excludeListLine (obj#readHosts argv.(0)) argv.(1))
 
 
 let _ = main ()
