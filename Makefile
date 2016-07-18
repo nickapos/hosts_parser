@@ -1,5 +1,5 @@
 parseHosts=parseHostsModule
-parseHosts: ; ocamlfind ocamlc -package extlib -linkpkg -I $(parseHosts)/ -o parseHosts $(parseHosts)/parseHosts.ml
+parseHosts: ; ocamlfind ocamlc -custom -package extlib -linkpkg -I $(parseHosts)/ -o parseHosts $(parseHosts)/parseHosts.ml
 
 .PHONY: clean all
 
