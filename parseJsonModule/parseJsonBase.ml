@@ -1,6 +1,5 @@
 open Yojson.Basic.Util
 open ExtLib
-open ExtLib
 class parseJsonBase = object (self)
  (*
   A class that will be able to parse a json file
