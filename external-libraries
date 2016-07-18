@@ -2,6 +2,7 @@ Opam packages:
 --------------
 ocamlfind
 extlib
+yojson
 
 System libraries:
 -----------------
