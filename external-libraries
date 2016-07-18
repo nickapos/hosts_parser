@@ -1,2 +1,9 @@
+Opam packages:
+--------------
 ocamlfind
 extlib
+
+System libraries:
+-----------------
+glibc-static (if we want to compile a static binary)
+
