@@ -41,7 +41,7 @@ class parseJsonBase = object (self)
 
 end;;
 
-(*let main () =
+(*let _ =
       let len = (Array.length Sys.argv) in
         let argv = (Array.sub Sys.argv 1 (len-1)) in 
           (*Array.iter cat argv *)
@@ -55,5 +55,5 @@ end;;
             obj#printNL (obj#decodeBase64 jsonStr) *)
 
 
-(*let _ = main ()*)
+
 
