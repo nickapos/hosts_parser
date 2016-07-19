@@ -3,6 +3,8 @@ Opam packages:
 ocamlfind
 extlib
 yojson
+cohttp
+lwt
 
 System libraries:
 -----------------
