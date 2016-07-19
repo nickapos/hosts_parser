@@ -47,7 +47,7 @@ class parseHosts = object (self)
 
 end;;
 
-let main () =
+let _ =
       let len = (Array.length Sys.argv) in
         let argv = (Array.sub Sys.argv 1 (len-1)) in 
           (*Array.iter cat argv *)
@@ -62,7 +62,3 @@ let main () =
           let cleanList=obj#excludeListLine (obj#readHosts hostsFile) hostname in
             (*obj#printHostsContents cleanList*)
             obj#printHostsContents (obj#appendToListNewIP cleanList hostname newIp)
-
-
-let _ = main ()
-
