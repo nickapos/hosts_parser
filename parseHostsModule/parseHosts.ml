@@ -17,7 +17,7 @@ class parseHosts = object (self)
   (*
    *This method will print the contents of a list line by line
    *)
-  method printHostsContents lines = match lines with
+  method printHostsContents = function
       | [] -> self#printNL "" 
       | x::xs -> 
           begin
@@ -29,7 +29,7 @@ class parseHosts = object (self)
    filter
    *)
   method includeListLine incomingList filterStr=
-    List.filter (fun x -> String.exists x filterStr) incomingList
+    List.filter (String.exists filterStr) incomingList
   
   (*
    *This method will return a list with lines that does not contain the string of the
