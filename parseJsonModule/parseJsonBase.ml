@@ -11,10 +11,6 @@ class parseJsonBase = object (self)
       *)
     Printf.printf "%s\n" str
 
-  method readHosts filename =
-    let chan = open_in filename in
-        Std.input_list chan
-
   (*
    *This method will print the contents of a list line by line
    *)
@@ -26,10 +22,15 @@ class parseJsonBase = object (self)
             self#printHostsContents xs
           end
   (*
-   * Read a json and return its contents
+   * Read a json from a file and return its contents
    *)
   method readJsonFromFile fileName = 
     Yojson.Basic.from_file fileName
+  (*
+   * Read a json from a string and return its contents
+   *)
+  method readJsonFromString jsonString = 
+    Yojson.Basic.from_string jsonString
   (*
    *Retrieve an element from a json structure
    *)
