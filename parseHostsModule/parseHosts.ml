@@ -62,7 +62,11 @@ let _ =
           let credfile=argv.(2) in
           let newIp=consulJson#getIP credfile hostname in
             match newIp with
-            | "" -> obj#printNL "No IP was returned by our query"
+            | "" -> 
+                Printf.printf "Error, retrieved values %s with ip %s in %s \n"hostname newIp hostsFile;
+                exit 1
             | _ -> 
               let cleanList=obj#excludeListLine (obj#readHosts hostsFile) hostname in
+              (*Printf.printf "Updating hostname %s with ip %s in %s \n"
+               * hostname newIp hostsFile;*)
               obj#printHostsContents (obj#appendToListNewIP cleanList hostname newIp)
