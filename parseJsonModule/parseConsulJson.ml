@@ -42,7 +42,7 @@ class parseConsulJson = object (self)
 
 end;;
 
-let _ =
+(* let _ =
       let len = (Array.length Sys.argv) in
         let argv = (Array.sub Sys.argv 1 (len-1)) in 
           (*Array.iter cat argv *)
@@ -56,6 +56,6 @@ let _ =
             (*let endpointList = ["blackwood";"mnisikli"] in 
             let f elem= obj#printNL (Lwt_main.run (obj#getConsul "username" "password" elem)) in
               List.iter f endpointList*0*)
-
+*)
 
 

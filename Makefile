@@ -1,6 +1,6 @@
 parseHosts=parseHostsModule
-parseHostsStaticByteCode: ; ocamlfind ocamlc -custom -package extlib -linkpkg -I $(parseHosts)/ -o parseHostsStaticByteCode $(parseHosts)/parseHosts.ml
-parseHostsStaticNativeCode: ; ocamlfind opt -verbose -cclib '-static' -package extlib -linkpkg -I $(parseHosts)/ -o parseHostsStaticNativeCode $(parseHosts)/parseHosts.ml
+parseHostsStaticByteCode: ; ocamlfind ocamlc -custom -package extlib,yojson,cohttp.lwt -linkpkg -I $(parseHosts)/ -I $(parseJson)/ -o parseHostsStaticByteCode $(parseJson)/parseJsonBase.ml $(parseJson)/parseConsulJson.ml $(parseHosts)/parseHosts.ml
+parseHostsStaticNativeCode: ; ocamlfind opt -verbose -cclib '-static' -package extlib,yojson,cohttp.lwt -linkpkg -I $(parseHosts)/ -I $(parseJson)/ -o parseHostsStaticNativeCode $(parseJson)/parseJsonBase.ml $(parseJson)/parseConsulJson.ml $(parseHosts)/parseHosts.ml
 
 parseJson=parseJsonModule
 parseJsonBaseStaticByteCode: ; ocamlfind ocamlc -custom -package extlib,yojson,cohttp.lwt -linkpkg -I $(parseJson)/ -o parseJsonBaseStaticByteCode $(parseJson)/parseJsonBase.ml $(parseJson)/parseConsulJson.ml

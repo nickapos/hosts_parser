@@ -56,6 +56,7 @@ let _ =
            * hostname, third the new ip
            *)
           let obj = new parseHosts in
+          let consulJson= new ParseConsulJson.parseConsulJson in
           let hostsFile=argv.(0) in
           let hostname=argv.(1) in
           let newIp=argv.(2) in
