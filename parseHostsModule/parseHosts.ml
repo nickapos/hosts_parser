@@ -18,7 +18,7 @@ class parseHosts = object (self)
    *This method will print the contents of a list line by line
    *)
   method printHostsContents = function
-      | [] -> self#printNL "" 
+      | [] -> ()
       | x::xs -> 
           begin
             self#printNL x;
