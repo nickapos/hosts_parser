@@ -7,6 +7,6 @@ parseJsonBaseStaticByteCode: ; ocamlfind ocamlc -custom -package extlib,yojson,c
 
 .PHONY: clean all
 
-clean: ; rm $(parseHosts)/*.cm* $(parseJson)/*.cm* parseHosts* parseJson* *log *cache
+clean: ; rm $(parseHosts)/*.cm* $(parseJson)/*.cm* parseHostsStaticByteCode parseHostsStaticNativeCode parseJsonBaseStaticByteCode 
 all: parseHostsStaticByteCode parseHostsStaticNativeCode parseJsonBaseStaticByteCode
 

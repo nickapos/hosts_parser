@@ -1,6 +1,7 @@
 open Lwt
 open Cohttp
 open Cohttp_lwt_unix
+open ExtLib
 class parseConsulJson = object (self)
   inherit ParseJsonBase.parseJsonBase
  (*
@@ -28,16 +29,16 @@ class parseConsulJson = object (self)
       self#getJsonElement fieldname json 
   
   (*
-   *Combining the above in order to retrieve the ip
+   *Combining the above in order to retrieve the ip from the json
    *)
   method getIP credFile endpoint =
     let username = self#getJsonField credFile "username" in
     let password = self#getJsonField credFile "password" in
-    let consulJsonStr = Lwt_main.run (self#getConsul username password endpoint) in
-      self#printNL consulJsonStr
-      (*let consulJson = self#readJsonFromString consulJsonStr in
-        let ipStr= self#getJsonElement "Value" consulJson in
-          self#decodeBase64 ipStr*)
+    let consulJsonStrBR = Lwt_main.run (self#getConsul username password endpoint) in
+    let consulJsonStr=String.strip ~chars:"[]" consulJsonStrBR in
+    let consulJson = self#readJsonFromString consulJsonStr in
+    let ipStr=self#getJsonElement "Value" consulJson in
+      self#decodeBase64 ipStr
 
 end;;
 
@@ -51,7 +52,7 @@ let _ =
            *)
           let obj = new parseConsulJson in
             let credFile="credentials.json" in
-              obj#getIP credFile "mnisikli"
+              obj#printNL (obj#getIP credFile "mnisikli")
             (*let endpointList = ["blackwood";"mnisikli"] in 
             let f elem= obj#printNL (Lwt_main.run (obj#getConsul "username" "password" elem)) in
               List.iter f endpointList*0*)
