@@ -42,20 +42,5 @@ class parseConsulJson = object (self)
 
 end;;
 
-(* let _ =
-      let len = (Array.length Sys.argv) in
-        let argv = (Array.sub Sys.argv 1 (len-1)) in 
-          (*Array.iter cat argv *)
-          (* create an object*)
-          (* The arguments should be, first the hosts file, second the
-           * hostname, third the new ip
-           *)
-          let obj = new parseConsulJson in
-            let credFile="credentials.json" in
-              obj#printNL (obj#getIP credFile "mnisikli")
-            (*let endpointList = ["blackwood";"mnisikli"] in 
-            let f elem= obj#printNL (Lwt_main.run (obj#getConsul "username" "password" elem)) in
-              List.iter f endpointList*0*)
-*)
 
 
