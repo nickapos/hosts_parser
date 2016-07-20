@@ -59,7 +59,10 @@ let _ =
           let consulJson= new ParseConsulJson.parseConsulJson in
           let hostsFile=argv.(0) in
           let hostname=argv.(1) in
-          let newIp=argv.(2) in
-          let cleanList=obj#excludeListLine (obj#readHosts hostsFile) hostname in
-            (*obj#printHostsContents cleanList*)
-            obj#printHostsContents (obj#appendToListNewIP cleanList hostname newIp)
+          let credfile=argv.(2) in
+          let newIp=consulJson#getIP credfile hostname in
+            match newIp with
+            | "" -> obj#printNL "No IP was returned by our query"
+            | _ -> 
+              let cleanList=obj#excludeListLine (obj#readHosts hostsFile) hostname in
+              obj#printHostsContents (obj#appendToListNewIP cleanList hostname newIp)
