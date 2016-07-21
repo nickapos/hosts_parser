@@ -11,8 +11,8 @@ class parseConsulJson = object (self)
  (*
   *How do we do an http request
   *)
-  method getConsul username password endpoint =
-    let urlString=Printf.sprintf "http://%s:%s@consul.oncrete.gr/v1/kv/%s/externalIP" username password endpoint in
+  method getConsul username password endpoint consulHost =
+    let urlString=Printf.sprintf "http://%s:%s@%s/v1/kv/%s/externalIP" username password consulHost endpoint in
     Client.get (Uri.of_string urlString) >>= fun (resp, body) ->
     (*let code = resp |> Response.status |> Code.code_of_status in
     Printf.printf "Response code: %d\n" code;
@@ -34,7 +34,8 @@ class parseConsulJson = object (self)
   method getIP credFile endpoint =
     let username = self#getJsonField credFile "username" in
     let password = self#getJsonField credFile "password" in
-    let consulJsonStrBR = Lwt_main.run (self#getConsul username password endpoint) in
+    let consulHost = self#getJsonField credFile "consulHost" in
+    let consulJsonStrBR = Lwt_main.run (self#getConsul username password endpoint consulHost) in
     let consulJsonStr=String.strip ~chars:"[]" consulJsonStrBR in
     let consulJson = self#readJsonFromString consulJsonStr in
     let ipStr=self#getJsonElement "Value" consulJson in
