@@ -67,6 +67,5 @@ let _ =
                 exit 1
             | _ -> 
               let cleanList=obj#excludeListLine (obj#readHosts hostsFile) hostname in
-              (*Printf.printf "Updating hostname %s with ip %s in %s \n"
-               * hostname newIp hostsFile;*)
+              Printf.printf "Updating hostname %s with ip %s in %s \n" hostname newIp hostsFile;
               obj#printHostsContents (obj#appendToListNewIP cleanList hostname newIp)

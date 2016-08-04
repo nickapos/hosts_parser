@@ -43,5 +43,24 @@ class parseConsulJson = object (self)
 
 end;;
 
+(*let _ =
+      let len = (Array.length Sys.argv) in
+        let argv = (Array.sub Sys.argv 1 (len-1)) in
+          (*Array.iter cat argv *)
+          (* create an object*)
+          (* The arguments should be, first the hosts file, second the
+           * hostname, third the new ip
+           *)
+          let obj = new parseConsulJson in
+          let hostname=argv.(0) in
+          let credfile=argv.(1) in
+          let username = obj#getJsonField credfile "username" in
+            let getJson = obj#getConsul username "E9C9GZMATLgsvYxo" "mnisikli" "consul.oncrete.gr" in
+            let jsonStr= Lwt_main.run (getJson) in
+            let consulJsonStr=String.strip ~chars:"[]" jsonStr in
+            let consulJson = obj#readJsonFromString consulJsonStr in
+            let ipStr=obj#getJsonElement "Value" consulJson in
+            obj#printNL  (obj#decodeBase64 ipStr)*)
+
 
 

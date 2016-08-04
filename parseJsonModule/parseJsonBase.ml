@@ -38,7 +38,7 @@ class parseJsonBase = object (self)
     json|> member elName|> to_string
 
   method decodeBase64 decString =
-    Base64.str_decode (String.rchop (String.rchop decString))
+    Base64.str_decode (String.rchop decString)
 
 end;;
 

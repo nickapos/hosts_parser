@@ -5,6 +5,7 @@ JSONSRC=$(wildcard $(parseJson)/*.ml)
 parseHostsStaticByteCode: ; ocamlfind ocamlc -custom -package extlib,yojson,cohttp.lwt -linkpkg -I $(parseHosts)/ -I $(parseJson)/ -o parseHostsStaticByteCode $(JSONSRC) $(parseHosts)/parseHosts.ml
 parseHostsStaticNativeCode: ; ocamlfind opt -verbose -cclib '-static' -package extlib,yojson,cohttp.lwt -linkpkg -I $(parseHosts)/ -I $(parseJson)/ -o parseHostsStaticNativeCode $(JSONSRC) $(parseHosts)/parseHosts.ml
 
+#parseJsonStaticByteCode: ; ocamlfind ocamlc -custom -package extlib,yojson,cohttp.lwt -linkpkg -I $(parseHosts)/ -I $(parseJson)/ -o parseiJsonStaticByteCode $(JSONSRC) $(parseJson)/parseConsulJson.ml
 parseJson=parseJsonModule
 
 .PHONY: clean all
