@@ -38,7 +38,7 @@ class parseJsonBase = object (self)
     json|> member elName|> to_string
 
   method decodeBase64 decString =
-    Base64.str_decode (String.rchop decString)
+    Base64.str_decode (String.strip ~chars:"=" decString)
 
 end;;
 
@@ -53,7 +53,7 @@ end;;
           let obj = new parseJsonBase in
             let json = obj#readJsonFromFile "example.json" in 
             let jsonStr= obj#getJsonElement "Value" json in
-            obj#printNL (obj#decodeBase64 jsonStr) *)
+            obj#printNL (obj#decodeBase64 jsonStr)*)
 
 
 
