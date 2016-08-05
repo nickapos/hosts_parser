@@ -6,3 +6,13 @@ After it retrieves the data, it will parse the /etc/hosts and add an entry or re
 
 
 The whole thing is written in ocaml
+
+# Usage
+
+This is a static bytecode binary so it should be portable to most x86
+compatible linux systems.
+It can be called like this:
+
+```
+parseHosts /etc/hosts nameOfHost credentials.json
+```
